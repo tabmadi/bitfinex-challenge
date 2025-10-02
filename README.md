@@ -152,65 +152,6 @@ bun run lint
 bun run format
 ```
 
-### 🪝 Git Hooks & Conventional Commits
-
-This template includes **Lefthook** for automated Git hooks and **Commitlint** for enforcing Conventional Commits:
-
-#### Automatic Quality Checks
-
-Git hooks will automatically run on:
-
-- **Pre-commit**: Format code, run linter, and type-check
-- **Commit-msg**: Validate commit message format
-- **Pre-push**: Final lint and type checks
-
-#### Conventional Commits
-
-All commit messages must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
-
-```bash
-# ✅ Valid commit messages
-git commit -m "feat: add user authentication"
-git commit -m "fix: resolve memory leak in data processing"
-git commit -m "docs: update API documentation"
-git commit -m "refactor: simplify error handling logic"
-
-# ❌ Invalid commit messages
-git commit -m "add feature"            # Missing type
-git commit -m "Fix bug"                # Wrong case
-git commit -m "feat!: breaking change" # Use BREAKING CHANGE footer instead
-```
-
-**Available commit types:**
-
-- `feat` - New features
-- `fix` - Bug fixes
-- `docs` - Documentation changes
-- `style` - Code style changes (formatting, etc.)
-- `refactor` - Code refactoring
-- `perf` - Performance improvements
-- `test` - Adding or updating tests
-- `build` - Build system changes
-- `ci` - CI configuration changes
-- `chore` - Other changes (maintenance, etc.)
-- `revert` - Reverting previous commits
-
-#### Managing Git Hooks
-
-```bash
-# Install hooks (automatically runs after `bun install`)
-bun run prepare
-
-# Skip hooks for a single commit (use sparingly)
-git commit -m "feat: add feature" --no-verify
-
-# Temporarily disable hooks
-lefthook uninstall
-
-# Re-enable hooks
-lefthook install
-```
-
 ### 📁 Project Structure
 
 ```
@@ -232,27 +173,6 @@ lefthook install
 └── README.md               # You are here! 📍
 ```
 
-## 🔧 Configuration
-
-### Biome Configuration
-
-The `biome.json` includes:
-
-- All recommended rules enabled
-- Tab indentation (configurable)
-- Git integration
-- Import organization
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Run the linter and formatter: `bun run format`
-5. Commit your changes (`git commit -m 'Add some amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
 ## 🔧 Further Development
 
 To extend this P2P exchange implementation:
@@ -263,23 +183,3 @@ To extend this P2P exchange implementation:
 4. **Security**: Implement authentication, authorization, and message signing
 5. **Monitoring**: Add logging, metrics, and health checks for production deployment
 6. **UI Interface**: Create a web-based trading interface for easier interaction
-
-## 🔒 Security
-
-Please see [SECURITY.md](SECURITY.md) for our security policy and how to report security vulnerabilities.
-
-## 📄 License
-
-This project is licensed under the Apache License—see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Bun](https://bun.sh/) for the amazing runtime
-- [Biome](https://biomejs.dev/) for fast linting and formatting
-- [Grenache](https://github.com/bitfinexcom/grenache) for the microservices framework
-- [Bitfinex](https://www.bitfinex.com/) for creating and maintaining Grenache
-- [Moonrepo](https://moonrepo.dev/) for excellent monorepo tooling
-
----
-
-**Happy coding! 🎉** If you find this template useful, please give it a ⭐️
