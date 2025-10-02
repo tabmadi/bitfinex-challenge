@@ -1,28 +1,53 @@
-# 🚀 Grenache Microservices Template
+# 🚀 BFX Challenge - P2P Distributed Exchange
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Bun](https://img.shields.io/badge/Bun-1.2-orange.svg)](https://bun.sh/)
 [![Biome](https://img.shields.io/badge/Biome-1.9-green.svg)](https://biomejs.dev/)
 [![Grenache](https://img.shields.io/badge/Grenache-1.0-green.svg)](https://github.com/bitfinexcom/grenache)
 
-A modern, production-ready template for Grenache microservices projects with all the essential tools and configurations
-you need to get started with distributed microservices quickly! 🎯
+Implementation of the Bitfinex challenge to create a simplified P2P distributed exchange using Grenache microservices.
+Each exchange node maintains its own order book instance and communicates with other nodes for order distribution and
+matching.
 
-Based on the [Bitfinex Grenache tutorial](https://blog.bitfinex.com/tutorial/bitfinex-loves-microservices-grenache/).
+**Challenge Details**: See [CHALLENGE.md](CHALLENGE.md) for the complete challenge description and requirements.
 
-## ✨ Features
+## ✨ Architecture
 
-This template comes pre-configured with:
+This P2P distributed exchange implementation includes:
 
-- 🔥 **Bun Runtime**: Ultra-fast JavaScript runtime and package manager
-- 🌐 **Grenache Microservices**: Distributed microservice architecture with DHT-based service discovery
-- 🧹 **Biome**: Fast linter and formatter (Prettier + ESLint replacement)
-- 📦 **Monorepo Structure**: Bun workspace with Moonrepo for task management
-- 🔗 **WebSocket Communication**: Server-client communication via Grenache WebSocket transport
-- 🚨 **Git Integration**: Pre-configured with Biome VCS integration
-- 🪝 **Git Hooks**: Lefthook for automated quality checks
-- 📝 **GitHub Templates**: CODE_OF_CONDUCT.md, SECURITY.md, and LICENSE included
-- ⚡ **Proto Tool Manager**: Automated tool management with [moonrepo proto](https://moonrepo.dev/proto)
+- 🔥 **Exchange Engine** (`apps/exchange-engine`): Our main P2P exchange node with a simple order book implementation
+- 🔗 **Trading Client** (`apps/trading-client`): Testing client for submitting orders and interacting with exchange nodes
+- 🍇 **Grape Cluster** (`apps/grape`): Helps run the Grenache DHT cluster for service discovery
+- 🌐 **Service Discovery**: Uses Grenache's DHT-based service discovery to find other exchange nodes
+- 📊 **Order Book Synchronization**: Exchange nodes share order book updates across the network
+- ⚡ **Real-time Matching**: Simple order matching engine with price-time priority
+- 🧹 **Code Quality**: Biome for linting and formatting, Lefthook for Git hooks
+- 📦 **Development Tools**: Bun runtime, Moonrepo workspace management, Proto tool manager
+
+## ⚠️ Known Issues & Limitations
+
+As this is a time-constrained challenge implementation, there are several known issues that require more development
+time:
+
+### 1. Duplicate Data Exchange Issue
+
+**Problem**: It's possible that we send the same data twice to the same exchange node.
+
+**Proposed Solutions**:
+
+- **Option A**: Find a way to get the full list of nodes from the Grenache cluster (uncertain if possible due to
+  Kademlia protocol limitations)
+- **Option B**: Add a unique identifier to each message to prevent duplicate storage
+
+### 2. Race Condition in Order Matching
+
+**Problem**: If two nodes simultaneously try to fill a buy order for the same sell order, the order gets matched twice.
+
+**Proposed Solutions**:
+
+- **Option A**: Designate only one node as the matcher (less P2P, more centralized)
+- **Option B**: Implement a simple consensus protocol where nodes broadcast match intentions, wait for approval from all
+  nodes, then execute the match
 
 ## 🚀 Quick Start
 
@@ -228,15 +253,16 @@ The `biome.json` includes:
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
-## 📋 Customization
+## 🔧 Further Development
 
-To customize this template for your project:
+To extend this P2P exchange implementation:
 
-1. **Update package.json files** with your project details in root and each app
-2. **Modify the microservices** in `apps/server/index.js` and `apps/client/index.js` to fit your needs
-3. **Adjust Biome configs** in `libs/biome/` as needed
-4. **Configure Grape DHT ports** in `apps/grape/package.json` for your network setup
-5. **Update this README** with your project-specific information
+1. **Fix Known Issues**: Implement solutions for duplicate data exchange and race condition problems
+2. **Enhanced Order Book**: Add more sophisticated matching algorithms and order types
+3. **Persistence**: Add database or file-based persistence for order history and state recovery
+4. **Security**: Implement authentication, authorization, and message signing
+5. **Monitoring**: Add logging, metrics, and health checks for production deployment
+6. **UI Interface**: Create a web-based trading interface for easier interaction
 
 ## 🔒 Security
 
