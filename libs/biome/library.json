@@ -19,7 +19,11 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"all": true
+			"all": true,
+			"suspicious": {
+				"noConsole": "off",
+				"noConsoleLog": "off"
+			}
 		}
 	},
 	"javascript": {
