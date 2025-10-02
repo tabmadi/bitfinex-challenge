@@ -88,7 +88,9 @@ const peer = new PeerRPCServer(link, {});
 peer.init();
 
 const service = peer.transport("server");
-service.listen(1337);
+
+const port = process.env.PORT || 1337;
+service.listen(port);
 
 setInterval(() => {
 	link.announce("exchange_node", service.port, {});
@@ -154,5 +156,5 @@ function broadcastToOtherNodes(action, data) {
 	console.log(`Broadcasting ${action} to ${peers.size} peers:`, data);
 }
 
-console.log("Exchange node started on port 1337");
+console.log(`Exchange node started on port ${port}`);
 console.log("Available actions: submitOrder, getOrderBook, orderUpdate, registerPeer");
