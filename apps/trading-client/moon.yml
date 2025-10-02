@@ -4,5 +4,5 @@ type: 'application'
 language: 'javascript'
 
 project:
-  name: 'client'
+  name: 'trading-client'
   description: 'A simple grenache client'

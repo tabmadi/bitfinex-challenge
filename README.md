@@ -68,15 +68,15 @@ This template comes pre-configured with:
 
 2. **Start the server** (after grape nodes are running):
    ```bash
-   # Terminal 3: Start the microservice server
-   cd apps/server
+   # Terminal 3: Start the microservice exchange-engine
+   cd apps/exchange-engine
    bun run dev
    ```
 
 3. **Start the client** (after server is running):
    ```bash
-   # Terminal 4: Start the client
-   cd apps/client
+   # Terminal 4: Start the trading-client
+   cd apps/trading-client
    bun run dev
    ```
 
@@ -97,7 +97,7 @@ This template comes pre-configured with:
 | `bun run dev:grape1` | Start first grape DHT node (port 20001)  |
 | `bun run dev:grape2` | Start second grape DHT node (port 20002) |
 
-#### Server Scripts (apps/server)
+#### Server Scripts (apps/exchange-engine)
 
 | Script           | Description                                 |
 |------------------|---------------------------------------------|
@@ -106,7 +106,7 @@ This template comes pre-configured with:
 | `bun run format` | Format server code with Biome               |
 | `bun run test`   | Run server tests                            |
 
-#### Client Scripts (apps/client)
+#### Client Scripts (apps/trading-client)
 
 | Script           | Description                   |
 |------------------|-------------------------------|
@@ -151,8 +151,8 @@ git commit -m "docs: update API documentation"
 git commit -m "refactor: simplify error handling logic"
 
 # ❌ Invalid commit messages
-git commit -m "add feature"           # Missing type
-git commit -m "Fix bug"              # Wrong case
+git commit -m "add feature"            # Missing type
+git commit -m "Fix bug"                # Wrong case
 git commit -m "feat!: breaking change" # Use BREAKING CHANGE footer instead
 ```
 
@@ -189,22 +189,22 @@ lefthook install
 ### 📁 Project Structure
 
 ```
-├── apps/                    # Monorepo applications
+├── apps/                   # Monorepo applications
 │   ├── grape/              # Grape DHT nodes for service discovery
 │   │   ├── package.json    # Grape app dependencies and scripts
 │   │   └── index.js        # Grape DHT node implementation
-│   ├── server/             # Grenache microservice server
+│   ├── exchange-engine     # Grenache microservice server
 │   │   ├── package.json    # Server dependencies and scripts
 │   │   └── index.js        # Server implementation
-│   └── client/             # Grenache microservice client
+│   └── trading-client      # Grenache microservice client
 │       ├── package.json    # Client dependencies and scripts
 │       └── index.js        # Client implementation
 ├── libs/                   # Shared libraries
 │   └── biome/              # Shared Biome configuration
 ├── .moon/                  # Moonrepo configuration
 ├── package.json            # Root workspace configuration
-├── lefthook.yml           # Git hooks configuration
-└── README.md              # You are here! 📍
+├── lefthook.yml            # Git hooks configuration
+└── README.md               # You are here! 📍
 ```
 
 ## 🔧 Configuration

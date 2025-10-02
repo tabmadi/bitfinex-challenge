@@ -4,8 +4,8 @@
     "": {
       "name": "bitfinex-challenge",
     },
-    "apps/client": {
-      "name": "@bitfinex-challenge/client",
+    "apps/exchange-engine": {
+      "name": "@bitfinex-challenge/exchange-engine",
       "dependencies": {
         "@bitfinex-challenge/biome": "workspace:*",
         "grenache-nodejs-link": "^1.0.2",
@@ -18,8 +18,8 @@
         "grenache-grape": "1.0.0",
       },
     },
-    "apps/server": {
-      "name": "@bitfinex-challenge/server",
+    "apps/trading-client": {
+      "name": "@bitfinex-challenge/trading-client",
       "dependencies": {
         "@bitfinex-challenge/biome": "workspace:*",
         "grenache-nodejs-link": "^1.0.2",
@@ -33,11 +33,11 @@
   "packages": {
     "@bitfinex-challenge/biome": ["@bitfinex-challenge/biome@workspace:libs/biome"],
 
-    "@bitfinex-challenge/client": ["@bitfinex-challenge/client@workspace:apps/client"],
+    "@bitfinex-challenge/exchange-engine": ["@bitfinex-challenge/exchange-engine@workspace:apps/exchange-engine"],
 
     "@bitfinex-challenge/grape": ["@bitfinex-challenge/grape@workspace:apps/grape"],
 
-    "@bitfinex-challenge/server": ["@bitfinex-challenge/server@workspace:apps/server"],
+    "@bitfinex-challenge/trading-client": ["@bitfinex-challenge/trading-client@workspace:apps/trading-client"],
 
     "@bitfinexcom/lib-js-util-base": ["@bitfinexcom/lib-js-util-base@github:bitfinexcom/lib-js-util-base#cfdcf72", {}, "bitfinexcom-lib-js-util-base-cfdcf72"],
 

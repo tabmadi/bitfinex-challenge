@@ -1,13 +1,13 @@
 {
 	"private": true,
-	"name": "@bitfinex-challenge/server",
+	"name": "@bitfinex-challenge/trading-client",
 	"type": "commonjs",
 	"main": "index.js",
 	"scripts": {
-		"format": "moon -q server:format",
-		"lint": "moon -q server:lint",
-		"test": "moon -q server:test",
-		"dev": "moon -q server:dev"
+		"format": "moon -q trading-client:format",
+		"lint": "moon -q trading-client:lint",
+		"test": "moon -q trading-client:test",
+		"dev": "moon -q trading-client:dev"
 	},
 	"dependencies": {
 		"@bitfinex-challenge/biome": "workspace:*",
