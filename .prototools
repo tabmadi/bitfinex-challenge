@@ -1,0 +1,13 @@
+moon = "1.40.4"
+cog = "6.3.0"
+lefthook = "1.13.0"
+bun = "1.2.22"
+biome = "1.9.4"
+
+[plugins.tools]
+cog = "file://.moon/plugins/cog.yml"
+lefthook = "https://raw.githubusercontent.com/ageha734/proto-plugins/refs/heads/master/toml/lefthook.toml"
+biome = "https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/biome/plugin.toml"
+
+[settings]
+telemetry = false

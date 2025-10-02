@@ -1,0 +1,11 @@
+{
+	"private": true,
+	"name": "bitfinex-challenge",
+	"workspaces": [
+		"apps/*",
+		"libs/*"
+	],
+	"scripts": {
+		"prepare": "lefthook install"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"private": true,
+	"name": "@bitfinex-challenge/client",
+	"type": "commonjs",
+	"main": "index.js",
+	"scripts": {
+		"format": "moon -q client:format",
+		"lint": "moon -q client:lint",
+		"test": "moon -q client:test",
+		"dev": "moon -q client:dev"
+	},
+	"dependencies": {
+		"@bitfinex-challenge/biome": "workspace:*",
+		"grenache-nodejs-ws": "^1.0.0",
+		"grenache-nodejs-link": "^1.0.2"
+	}
+}

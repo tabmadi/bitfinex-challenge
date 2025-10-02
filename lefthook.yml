@@ -1,0 +1,18 @@
+commit-msg:
+  commands:
+    cog:
+      run: cog verify --file {1}
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,ts,tsx,jsx}"
+      run: moon -q :lint
+
+pre-push:
+  commands:
+    cog:
+      run: cog check
+    lint:
+      run: moon -q :lint
