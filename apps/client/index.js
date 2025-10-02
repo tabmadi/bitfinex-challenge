@@ -19,5 +19,9 @@ peer.request(
 		if (err) {
 			throw err;
 		}
+
+		// biome-ignore lint/suspicious/noConsole: Logging is required for debugging
+		console.info(_result);
+		process.exit(0);
 	},
 );
