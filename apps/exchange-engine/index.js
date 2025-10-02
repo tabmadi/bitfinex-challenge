@@ -1,4 +1,4 @@
-const { PeerRPCServer } = require("grenache-nodejs-ws");
+const { PeerRPCServer, PeerRPCClient } = require("grenache-nodejs-ws");
 const Link = require("grenache-nodejs-link");
 
 class OrderBook {
@@ -87,9 +87,12 @@ link.start();
 const peer = new PeerRPCServer(link, {});
 peer.init();
 
+const client = new PeerRPCClient(link, {});
+client.init();
+
 const service = peer.transport("server");
 
-const port = process.env.PORT || 1337;
+const port = Number.parseInt(process.env.PORT) || 1337;
 service.listen(port);
 
 setInterval(() => {
@@ -151,9 +154,29 @@ service.on("request", (_rid, _key, payload, handler) => {
 });
 
 function broadcastToOtherNodes(action, data) {
-	// In a real implementation, this would send to all known peers
-	// For now, we'll just log the broadcast
-	console.log(`Broadcasting ${action} to ${peers.size} peers:`, data);
+	if (peers.size === 0) {
+		console.log(`No peers to broadcast ${action} to`);
+		return;
+	}
+
+	console.log(`Broadcasting ${action} to ${peers.size} peers`);
+
+	// Use Grenache's service discovery to find other exchange_node instances
+	// Since we can't target specific peers directly, we broadcast to the service
+	// and let the network handle distribution
+	const payload = { action, data };
+
+	// Make multiple requests to increase the chance of reaching different nodes
+	// This is a simple approach for distributed broadcasting
+	for (let i = 0; i < Math.min(peers.size, 3); i++) {
+		client.request("exchange_node", payload, { timeout: 5000 }, (err, _result) => {
+			if (err) {
+				console.error(`Broadcast error for ${action}:`, err.message);
+			} else {
+				console.log(`Successfully broadcasted ${action} to a peer`);
+			}
+		});
+	}
 }
 
 console.log(`Exchange node started on port ${port}`);
