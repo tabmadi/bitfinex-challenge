@@ -4,29 +4,32 @@ Hi and congratulations to your progress with Bitfinex!
 
 Your task is to create a simplified P2P distributed exchange
 
-* Each client will have its own instance of the orderbook.
-* Clients submit orders to their own instance of orderbook. The order is distributed to other instances, too.
-* If a client's order matches with another order, any remainer is added to the orderbook, too.
+* Each client will have its own instance of the order book.
+* Clients submit orders to their own instance of the order book. The order is distributed to other instances, too.
+* If a client's order matches with another order, any remainer is added to the order book, too.
 
 Requirement:
-* Code in Javascript
+
+* Code in JavaScript
 * Use Grenache for communication between nodes
 * Simple order matching engine
 * You don't need to create a UI or HTTP API
 
-You should not spend more time than 6-8 hours on the task. We know that its probably not possible to complete the task 100% in the given time.
+You should not spend more time than 6–8 hours on the task. We know that it's probably not possible to complete the task
+100% in the given time.
 
-
-If you don't get to the end, just write up what is missing for a complete implementation of the task. Also, if your implementation has limitation and issues, that's no big deal. Just write everything down and indicate how you could solve them, given there was more time.
+If you don't get to the end, just write up what is missing for a complete implementation of the task. Also, if your
+implementation has limitations and issues, that's no big deal. Write everything down and indicate how you could solve
+them, given there was more time.
 
 Good luck!
 
 ## Tips
 
- - you don't need to store state in a DB or filesystem
- - it is possible to solve the task with the node std lib, async and grenache libraries
- - beware of race conditions!
- - no need for express or any other http api layers
+- you don't need to store state in a DB or filesystem
+- it is possible to solve the task with the node std lib, async and grenache libraries
+- beware of race conditions!
+- no need for express or any other http api layers
 
 ### Setting up the DHT
 
@@ -48,7 +51,6 @@ npm install --save grenache-nodejs-http
 npm install --save grenache-nodejs-link
 ```
 
-
 ### Example RPC server / client with "Hello World"
 
 ```js
@@ -58,7 +60,7 @@ npm install --save grenache-nodejs-link
 
 'use strict'
 
-const { PeerRPCServer }  = require('grenache-nodejs-http')
+const {PeerRPCServer} = require('grenache-nodejs-http')
 const Link = require('grenache-nodejs-link')
 
 
@@ -82,7 +84,7 @@ setInterval(function () {
 
 service.on('request', (rid, key, payload, handler) => {
   console.log(payload) //  { msg: 'hello' }
-  handler.reply(null, { msg: 'world' })
+  handler.reply(null, {msg: 'world'})
 })
 
 ```
@@ -94,7 +96,7 @@ service.on('request', (rid, key, payload, handler) => {
 
 'use strict'
 
-const { PeerRPCClient }  = require('grenache-nodejs-http')
+const {PeerRPCClient} = require('grenache-nodejs-http')
 const Link = require('grenache-nodejs-link')
 
 const link = new Link({
@@ -105,7 +107,7 @@ link.start()
 const peer = new PeerRPCClient(link, {})
 peer.init()
 
-peer.request('rpc_test', { msg: 'hello' }, { timeout: 10000 }, (err, data) => {
+peer.request('rpc_test', {msg: 'hello'}, {timeout: 10000}, (err, data) => {
   if (err) {
     console.error(err)
     process.exit(-1)
@@ -116,6 +118,6 @@ peer.request('rpc_test', { msg: 'hello' }, { timeout: 10000 }, (err, data) => {
 
 ### More Help
 
- - http://blog.bitfinex.com/tutorial/bitfinex-loves-microservices-grenache/
- - https://github.com/bitfinexcom/grenache-nodejs-example-fib-client
- - https://github.com/bitfinexcom/grenache-nodejs-example-fib-server
+- http://blog.bitfinex.com/tutorial/bitfinex-loves-microservices-grenache/
+- https://github.com/bitfinexcom/grenache-nodejs-example-fib-client
+- https://github.com/bitfinexcom/grenache-nodejs-example-fib-server
