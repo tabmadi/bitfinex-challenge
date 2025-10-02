@@ -4,5 +4,5 @@ type: 'application'
 language: 'javascript'
 
 project:
-  name: 'exchange-engine'
+  name: 'exchange-node'
   description: 'A simple grenache server'

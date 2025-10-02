@@ -1,13 +1,13 @@
 {
 	"private": true,
-	"name": "@bitfinex-challenge/exchange-engine",
+	"name": "@bitfinex-challenge/exchange-node",
 	"type": "commonjs",
 	"main": "index.js",
 	"scripts": {
-		"format": "moon -q exchange-engine:format",
-		"lint": "moon -q exchange-engine:lint",
-		"test": "moon -q exchange-engine:test",
-		"dev": "moon -q exchange-engine:dev"
+		"format": "moon -q exchange-node:format",
+		"lint": "moon -q exchange-node:lint",
+		"test": "moon -q exchange-node:test",
+		"dev": "moon -q exchange-node:dev"
 	},
 	"dependencies": {
 		"@bitfinex-challenge/biome": "workspace:*",

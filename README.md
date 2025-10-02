@@ -15,7 +15,7 @@ matching.
 
 This P2P distributed exchange implementation includes:
 
-- 🔥 **Exchange Engine** (`apps/exchange-engine`): Our main P2P exchange node with a simple order book implementation
+- 🔥 **Exchange Node** (`apps/exchange-node`): Our main P2P exchange node with a simple order book implementation
 - 🔗 **Trading Client** (`apps/trading-client`): Testing client for submitting orders and interacting with exchange nodes
 - 🍇 **Grape Cluster** (`apps/grape`): Helps run the Grenache DHT cluster for service discovery
 - 🌐 **Service Discovery**: Uses Grenache's DHT-based service discovery to find other exchange nodes
@@ -93,8 +93,8 @@ time:
 
 2. **Start the server** (after grape nodes are running):
    ```bash
-   # Terminal 3: Start the microservice exchange-engine
-   cd apps/exchange-engine
+   # Terminal 3: Start the microservice exchange-node
+   cd apps/exchange-node
    bun run dev
    ```
 
@@ -122,7 +122,7 @@ time:
 | `bun run dev:grape1` | Start first grape DHT node (port 20001)  |
 | `bun run dev:grape2` | Start second grape DHT node (port 20002) |
 
-#### Server Scripts (apps/exchange-engine)
+#### Server Scripts (apps/exchange-node)
 
 | Script           | Description                                 |
 |------------------|---------------------------------------------|
@@ -159,7 +159,7 @@ bun run format
 │   ├── grape/              # Grape DHT nodes for service discovery
 │   │   ├── package.json    # Grape app dependencies and scripts
 │   │   └── index.js        # Grape DHT node implementation
-│   ├── exchange-engine     # Grenache microservice server
+│   ├── exchange-node     # Grenache microservice server
 │   │   ├── package.json    # Server dependencies and scripts
 │   │   └── index.js        # Server implementation
 │   └── trading-client      # Grenache microservice client

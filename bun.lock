@@ -4,8 +4,8 @@
     "": {
       "name": "bitfinex-challenge",
     },
-    "apps/exchange-engine": {
-      "name": "@bitfinex-challenge/exchange-engine",
+    "apps/exchange-node": {
+      "name": "@bitfinex-challenge/exchange-node",
       "dependencies": {
         "@bitfinex-challenge/biome": "workspace:*",
         "grenache-nodejs-link": "^1.0.2",
@@ -33,7 +33,7 @@
   "packages": {
     "@bitfinex-challenge/biome": ["@bitfinex-challenge/biome@workspace:libs/biome"],
 
-    "@bitfinex-challenge/exchange-engine": ["@bitfinex-challenge/exchange-engine@workspace:apps/exchange-engine"],
+    "@bitfinex-challenge/exchange-node": ["@bitfinex-challenge/exchange-node@workspace:apps/exchange-node"],
 
     "@bitfinex-challenge/grape": ["@bitfinex-challenge/grape@workspace:apps/grape"],
 
